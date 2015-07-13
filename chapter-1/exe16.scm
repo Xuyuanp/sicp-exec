@@ -1,0 +1,8 @@
+(define (square x)
+  (* x x))
+(define (super-fast-expt b n)
+  (define (super-fast-expt-iter b n a)
+    (cond ((= n 0) a)
+          ((even? n) (super-fast-expt-iter (square b) (/ n 2) a))
+          (else (super-fast-expt-iter b (- n 1) (* a b)))))
+  (super-fast-expt-iter b n 1))
